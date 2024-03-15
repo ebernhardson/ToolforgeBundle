@@ -130,6 +130,15 @@ In controllers, you can test whether the user is logged in by checking:
 
     $this->get('session')->get('logged_in_user')
 
+If your application is only using oauth for authentication, and not authorization, you
+can set `authenticate_only` to true. In this mode mediawiki will only ask the user to
+approve the access the first time it is used, instead of every time. e.g.:
+
+    toolforge:
+      oauth:
+        authenticate_only: true
+
+
 #### Redirecting after login
 
 After the user logs in, you may want to redirect them back to the page they originally tried to

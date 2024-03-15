@@ -42,7 +42,8 @@ class AuthController extends AbstractController
         }
 
         // Continue with OAuth authentication.
-        [$next, $token] = $oauthClient->initiate();
+        [$next, $token] = $oauthClient->initiate(
+            $this->getParameter('toolforge.oauth.authenticate_only'));
 
         // Save the request token to the session.
         $session->set('oauth.request_token', $token);
